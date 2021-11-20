@@ -8,6 +8,7 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
+import java.util.List;
 
 @Entity
 @Table(name = "lessons")
@@ -28,6 +29,15 @@ public class Lesson extends BaseEntity {
     @OneToOne
     @JoinColumn(name = "classroom_id", nullable = false)
     private Classroom classroom;
+
+    @ManyToMany
+    @JoinTable(
+            name = "lessons_groups",
+            joinColumns = @JoinColumn(name = "lesson_id"),
+            inverseJoinColumns = @JoinColumn(name = "group_id")
+    )
+    @ToString.Exclude
+    private List<Group> groups;
 
     @Column(name = "day_of_week", nullable = false)
     private DayOfWeek dayOfWeek;
