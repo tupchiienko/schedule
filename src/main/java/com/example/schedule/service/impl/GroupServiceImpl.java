@@ -39,8 +39,7 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public Group update(Long id, GroupDto dto) {
-        Group group = groupRepo.findById(id).orElseThrow();
-        return groupRepo.save(groupMapper.updateEntity(group, dto));
+        return groupRepo.save(groupMapper.updateEntity(this.findById(id), dto));
     }
 
     @Override
