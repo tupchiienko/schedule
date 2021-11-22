@@ -1,5 +1,6 @@
 package com.example.schedule.dto;
 
+import com.example.schedule.config.FullInfo;
 import lombok.*;
 
 import javax.validation.constraints.NotNull;
@@ -13,10 +14,10 @@ import javax.validation.constraints.Positive;
 public class ClassroomDto {
 
     @Positive
-    @NotNull
+    @NotNull(groups = FullInfo.class)
     private Integer pavilionNumber;
 
     @Positive
-    @NotNull
+    @NotNull(groups = FullInfo.class)
     private Integer roomNumber;
 }

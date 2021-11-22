@@ -1,5 +1,6 @@
 package com.example.schedule.dto;
 
+import com.example.schedule.config.FullInfo;
 import lombok.*;
 
 import javax.validation.constraints.NotEmpty;
@@ -13,7 +14,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 public class SubjectDto {
 
-    @NotNull
+    @NotNull(groups = FullInfo.class)
     @NotEmpty
     @Size(max = 128)
     private String name;

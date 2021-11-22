@@ -1,5 +1,6 @@
 package com.example.schedule.dto;
 
+import com.example.schedule.config.FullInfo;
 import lombok.*;
 
 import javax.validation.constraints.NotEmpty;
@@ -15,22 +16,22 @@ import java.util.List;
 @AllArgsConstructor
 public class LessonDto {
 
-    @NotNull
+    @NotNull(groups = FullInfo.class)
     private Long subjectId;
 
-    @NotNull
+    @NotNull(groups = FullInfo.class)
     private Long teacherId;
 
-    @NotNull
+    @NotNull(groups = FullInfo.class)
     private Long classroomId;
 
-    @NotNull
+    @NotNull(groups = FullInfo.class)
     @NotEmpty
     private List<Long> groupsIdList;
 
-    @NotNull
+    @NotNull(groups = FullInfo.class)
     private DayOfWeek dayOfWeek;
 
-    @NotNull
+    @NotNull(groups = FullInfo.class)
     private LocalTime time;
 }
