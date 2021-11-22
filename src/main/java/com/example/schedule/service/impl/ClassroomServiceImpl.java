@@ -33,11 +33,6 @@ public class ClassroomServiceImpl implements ClassroomService {
     }
 
     @Override
-    public List<Classroom> findAllById(List<Long> ids) {
-        return classroomRepo.findAllById(ids);
-    }
-
-    @Override
     public Classroom update(Long id, ClassroomDto dto) {
         return classroomRepo.save(classroomMapper.updateEntity(this.findById(id), dto));
     }

@@ -33,17 +33,12 @@ public class LessonServiceImpl implements LessonService {
     }
 
     @Override
-    public List<Lesson> findAllById(List<Long> ids) {
-        return lessonRepo.findAllById(ids);
-    }
-
-    @Override
     public Lesson update(Long id, LessonDto dto) {
         return lessonRepo.save(lessonMapper.updateEntity(this.findById(id), dto));
     }
 
     @Override
     public void delete(Long id) {
-
+        lessonRepo.deleteById(id);
     }
 }

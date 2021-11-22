@@ -12,8 +12,6 @@ public interface CrudService<ID, E extends BaseEntity, D> {
 
     List<E> findAll();
 
-    List<E> findAllById(List<ID> ids);
-
     E update(ID id, D dto);
 
     void delete(ID id);

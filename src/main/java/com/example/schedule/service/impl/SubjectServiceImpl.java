@@ -33,11 +33,6 @@ public class SubjectServiceImpl implements SubjectService {
     }
 
     @Override
-    public List<Subject> findAllById(List<Long> ids) {
-        return subjectRepo.findAllById(ids);
-    }
-
-    @Override
     public Subject update(Long id, SubjectDto dto) {
         return subjectRepo.save(subjectMapper.updateEntity(this.findById(id), dto));
     }

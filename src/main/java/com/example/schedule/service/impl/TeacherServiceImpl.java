@@ -33,11 +33,6 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public List<Teacher> findAllById(List<Long> ids) {
-        return teacherRepo.findAllById(ids);
-    }
-
-    @Override
     public Teacher update(Long id, TeacherDto dto) {
         return teacherRepo.save(teacherMapper.updateEntity(this.findById(id), dto));
     }
