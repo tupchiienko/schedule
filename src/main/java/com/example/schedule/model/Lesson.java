@@ -1,9 +1,6 @@
 package com.example.schedule.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.DayOfWeek;
@@ -16,6 +13,7 @@ import java.util.List;
 @Setter
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
 public class Lesson extends BaseEntity {
 
     @OneToOne

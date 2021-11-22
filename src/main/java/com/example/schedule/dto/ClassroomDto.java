@@ -1,9 +1,6 @@
 package com.example.schedule.dto;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
@@ -12,6 +9,7 @@ import javax.validation.constraints.Positive;
 @Setter
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
 public class ClassroomDto {
 
     @Positive

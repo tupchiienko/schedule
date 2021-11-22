@@ -1,9 +1,6 @@
 package com.example.schedule.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -13,6 +10,7 @@ import javax.persistence.*;
 @Setter
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
 public class Student extends BaseEntity {
 
     @Column(name = "first_name", nullable = false)

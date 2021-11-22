@@ -12,6 +12,7 @@ import javax.persistence.Table;
 @Setter
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
 public class Group extends BaseEntity {
 
     @Column(name = "code", nullable = false, unique = true)
