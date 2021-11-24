@@ -168,4 +168,84 @@ public class LessonServiceImplUnitTest {
 
         Mockito.verify(lessonRepo, Mockito.times(1)).deleteById(1L);
     }
+
+    @Test
+    public void findAllByGroupCodeAndDayOfWeekTest() {
+        Lesson lesson1 = new Lesson(
+                new Subject("English"),
+                new Teacher("Maria", "Petrova"),
+                new Classroom(12, 6),
+                List.of(new Group("IV-72")),
+                DayOfWeek.MONDAY,
+                LocalTime.of(14, 0)
+        );
+        Lesson lesson2 = new Lesson(
+                new Subject("Math"),
+                new Teacher("Ivan", "Ivanov"),
+                new Classroom(1, 56),
+                List.of(new Group("IV-72"), new Group("IO-02")),
+                DayOfWeek.MONDAY,
+                LocalTime.of(12, 0)
+        );
+        Lesson lesson3 = new Lesson(
+                new Subject("Programing"),
+                new Teacher("Andrey", "Stepanov"),
+                new Classroom(3, 154),
+                List.of(new Group("IV-72")),
+                DayOfWeek.MONDAY,
+                LocalTime.of(10, 0)
+        );
+        List<Lesson> lessons = List.of(lesson1, lesson2, lesson3);
+
+        Mockito.when(lessonRepo.findAllByGroupCodeAndDayOfWeek("IV-72", DayOfWeek.MONDAY.ordinal()))
+                .thenReturn(lessons);
+
+        List<Lesson> allByGroupCodeAndDayOfWeek = lessonService
+                .findAllByGroupCodeAndDayOfWeek("IV-72", DayOfWeek.MONDAY);
+
+        Mockito.verify(lessonRepo, Mockito.times(1))
+                .findAllByGroupCodeAndDayOfWeek("IV-72", DayOfWeek.MONDAY.ordinal());
+        Assert.assertEquals(lessons, allByGroupCodeAndDayOfWeek);
+    }
+
+    @Test
+    public void findAllByTeacherAndDayOfWeekTest() {
+        Lesson lesson1 = new Lesson(
+                new Subject("English"),
+                new Teacher("Maria", "Petrova"),
+                new Classroom(12, 6),
+                List.of(new Group("IO-72")),
+                DayOfWeek.MONDAY,
+                LocalTime.of(14, 0)
+        );
+        Lesson lesson2 = new Lesson(
+                new Subject("English"),
+                new Teacher("Maria", "Petrova"),
+                new Classroom(1, 56),
+                List.of(new Group("IV-72")),
+                DayOfWeek.MONDAY,
+                LocalTime.of(12, 0)
+        );
+        Lesson lesson3 = new Lesson(
+                new Subject("English"),
+                new Teacher("Maria", "Petrova"),
+                new Classroom(3, 154),
+                List.of(new Group("IV-73")),
+                DayOfWeek.MONDAY,
+                LocalTime.of(10, 0)
+        );
+        List<Lesson> lessons = List.of(lesson1, lesson2, lesson3);
+
+        Mockito.when(lessonRepo.findAllByTeacherFirstNameAndTeacherLastNameAndDayOfWeek(
+                "Maria", "Petrova", DayOfWeek.MONDAY)
+                ).thenReturn(lessons);
+
+        List<Lesson> allByTeacherAndDayOfWeek = lessonService
+                .findAllByTeacherAndDayOfWeek("Maria", "Petrova", DayOfWeek.MONDAY);
+
+        Mockito.verify(lessonRepo, Mockito.times(1))
+                .findAllByTeacherFirstNameAndTeacherLastNameAndDayOfWeek(
+                        "Maria", "Petrova", DayOfWeek.MONDAY);
+        Assert.assertEquals(lessons, allByTeacherAndDayOfWeek);
+    }
 }
