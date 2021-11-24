@@ -8,7 +8,9 @@ import com.example.schedule.service.LessonService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.DayOfWeek;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @AllArgsConstructor
@@ -24,7 +26,9 @@ public class LessonServiceImpl implements LessonService {
 
     @Override
     public Lesson findById(Long id) {
-        return lessonRepo.findById(id).orElseThrow();
+        return lessonRepo.findById(id).orElseThrow(
+                () -> new NoSuchElementException("Lesson with id:'" + id + "' does not exist")
+        );
     }
 
     @Override
@@ -40,5 +44,16 @@ public class LessonServiceImpl implements LessonService {
     @Override
     public void delete(Long id) {
         lessonRepo.deleteById(id);
+    }
+
+
+    @Override
+    public List<Lesson> findAllByGroupCodeAndDayOfWeek(String groupCode, DayOfWeek dayOfWeek) {
+        return lessonRepo.findAllByGroupCodeAndDayOfWeek(groupCode, dayOfWeek.ordinal());
+    }
+
+    @Override
+    public List<Lesson> findAllByTeacherAndDayOfWeek(String firstName, String lastName, DayOfWeek dayOfWeek) {
+        return lessonRepo.findAllByTeacherFirstNameAndTeacherLastNameAndDayOfWeek(firstName, lastName, dayOfWeek);
     }
 }

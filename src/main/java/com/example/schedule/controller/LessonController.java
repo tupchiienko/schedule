@@ -1,6 +1,7 @@
 package com.example.schedule.controller;
 
-import com.example.schedule.config.FullInfo;
+import com.example.schedule.data.validation.CreateInfo;
+import com.example.schedule.data.validation.UpdateInfo;
 import com.example.schedule.dto.LessonDto;
 import com.example.schedule.model.Lesson;
 import com.example.schedule.service.LessonService;
@@ -9,7 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+import java.time.DayOfWeek;
 import java.util.List;
 
 @RestController
@@ -24,7 +25,7 @@ public class LessonController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Lesson create(@RequestBody @Validated(FullInfo.class) LessonDto lessonDto) {
+    public Lesson create(@RequestBody @Validated(CreateInfo.class) LessonDto lessonDto) {
         return lessonService.create(lessonDto);
     }
 
@@ -49,7 +50,7 @@ public class LessonController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Lesson update(@PathVariable Long id, @RequestBody @Valid LessonDto lessonDto) {
+    public Lesson update(@PathVariable Long id, @RequestBody @Validated(UpdateInfo.class) LessonDto lessonDto) {
         return lessonService.update(id, lessonDto);
     }
 
@@ -58,5 +59,27 @@ public class LessonController {
     )
     public void delete(@PathVariable Long id) {
         lessonService.delete(id);
+    }
+
+    @GetMapping(
+            value = "/list/group",
+            params = {"groupCode", "dayOfWeek"},
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public List<Lesson> getAllByGroupCodeAndDayOfWeek(@RequestParam String groupCode, @RequestParam DayOfWeek dayOfWeek) {
+        return lessonService.findAllByGroupCodeAndDayOfWeek(groupCode, dayOfWeek);
+    }
+
+    @GetMapping(
+            value = "/list/teacher",
+            params = {"firstName", "lastName", "dayOfWeek"},
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public List<Lesson> getAllByTeacherAndDayOfWeek(
+            @RequestParam String firstName,
+            @RequestParam String lastName,
+            @RequestParam DayOfWeek dayOfWeek
+    ) {
+        return lessonService.findAllByTeacherAndDayOfWeek(firstName, lastName, dayOfWeek);
     }
 }
