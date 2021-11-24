@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @AllArgsConstructor
@@ -24,7 +25,9 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public Teacher findById(Long id) {
-        return teacherRepo.findById(id).orElseThrow();
+        return teacherRepo.findById(id).orElseThrow(
+                () -> new NoSuchElementException("Teacher with id:'" + id + "' does not exist")
+        );
     }
 
     @Override

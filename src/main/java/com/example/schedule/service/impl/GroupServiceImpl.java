@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @AllArgsConstructor
@@ -24,7 +25,9 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     public Group findById(Long id) {
-        return groupRepo.findById(id).orElseThrow();
+        return groupRepo.findById(id).orElseThrow(
+                () -> new NoSuchElementException("Group with id:'" + id + "' does not exist")
+        );
     }
 
     @Override
