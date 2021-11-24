@@ -1,9 +1,9 @@
 package com.example.schedule;
 
-import com.example.schedule.dto.StudentDto;
+import com.example.schedule.data.dto.StudentDto;
 import com.example.schedule.mapper.StudentMapper;
-import com.example.schedule.model.Group;
-import com.example.schedule.model.Student;
+import com.example.schedule.data.model.Group;
+import com.example.schedule.data.model.Student;
 import com.example.schedule.repo.StudentRepo;
 import com.example.schedule.service.impl.StudentServiceImpl;
 import org.junit.Assert;

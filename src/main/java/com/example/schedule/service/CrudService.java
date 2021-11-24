@@ -1,6 +1,6 @@
 package com.example.schedule.service;
 
-import com.example.schedule.model.BaseEntity;
+import com.example.schedule.data.model.BaseEntity;
 
 import java.util.List;
 

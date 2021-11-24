@@ -1,8 +1,8 @@
 package com.example.schedule.service.impl;
 
-import com.example.schedule.dto.TeacherDto;
+import com.example.schedule.data.dto.TeacherDto;
 import com.example.schedule.mapper.TeacherMapper;
-import com.example.schedule.model.Teacher;
+import com.example.schedule.data.model.Teacher;
 import com.example.schedule.repo.TeacherRepo;
 import com.example.schedule.service.TeacherService;
 import lombok.AllArgsConstructor;

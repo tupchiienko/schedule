@@ -1,24 +1,26 @@
-package com.example.schedule.model;
+package com.example.schedule.data.model;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "teachers")
+@Table(name = "students")
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Teacher extends BaseEntity {
+public class Student extends BaseEntity {
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
 
     @Column(name = "last_name", nullable = false)
     private String lastName;
+
+    @OneToOne
+    @JoinColumn(name = "group_id", nullable = false)
+    private Group group;
 
 }

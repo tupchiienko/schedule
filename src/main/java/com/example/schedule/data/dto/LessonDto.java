@@ -1,4 +1,4 @@
-package com.example.schedule.dto;
+package com.example.schedule.data.dto;
 
 import com.example.schedule.data.validation.CreateInfo;
 import lombok.*;

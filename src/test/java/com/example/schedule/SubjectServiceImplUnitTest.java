@@ -1,8 +1,8 @@
 package com.example.schedule;
 
-import com.example.schedule.dto.SubjectDto;
+import com.example.schedule.data.dto.SubjectDto;
 import com.example.schedule.mapper.SubjectMapper;
-import com.example.schedule.model.Subject;
+import com.example.schedule.data.model.Subject;
 import com.example.schedule.repo.SubjectRepo;
 import com.example.schedule.service.impl.SubjectServiceImpl;
 import org.junit.Assert;

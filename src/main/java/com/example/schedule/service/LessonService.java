@@ -1,7 +1,7 @@
 package com.example.schedule.service;
 
-import com.example.schedule.dto.LessonDto;
-import com.example.schedule.model.Lesson;
+import com.example.schedule.data.dto.LessonDto;
+import com.example.schedule.data.model.Lesson;
 
 import java.time.DayOfWeek;
 import java.util.List;

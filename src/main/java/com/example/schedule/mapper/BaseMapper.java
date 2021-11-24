@@ -1,6 +1,6 @@
 package com.example.schedule.mapper;
 
-import com.example.schedule.model.BaseEntity;
+import com.example.schedule.data.model.BaseEntity;
 import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;

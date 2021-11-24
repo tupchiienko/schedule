@@ -1,7 +1,7 @@
 package com.example.schedule.mapper;
 
-import com.example.schedule.dto.LessonDto;
-import com.example.schedule.model.Lesson;
+import com.example.schedule.data.dto.LessonDto;
+import com.example.schedule.data.model.Lesson;
 import com.example.schedule.service.ClassroomService;
 import com.example.schedule.service.GroupService;
 import com.example.schedule.service.SubjectService;

@@ -2,8 +2,8 @@ package com.example.schedule.controller;
 
 import com.example.schedule.data.validation.CreateInfo;
 import com.example.schedule.data.validation.UpdateInfo;
-import com.example.schedule.dto.TeacherDto;
-import com.example.schedule.model.Teacher;
+import com.example.schedule.data.dto.TeacherDto;
+import com.example.schedule.data.model.Teacher;
 import com.example.schedule.service.TeacherService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;

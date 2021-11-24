@@ -1,8 +1,8 @@
 package com.example.schedule;
 
-import com.example.schedule.dto.GroupDto;
+import com.example.schedule.data.dto.GroupDto;
 import com.example.schedule.mapper.GroupMapper;
-import com.example.schedule.model.Group;
+import com.example.schedule.data.model.Group;
 import com.example.schedule.repo.GroupRepo;
 import com.example.schedule.service.impl.GroupServiceImpl;
 import org.junit.Assert;

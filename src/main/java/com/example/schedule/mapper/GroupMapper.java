@@ -1,7 +1,7 @@
 package com.example.schedule.mapper;
 
-import com.example.schedule.dto.GroupDto;
-import com.example.schedule.model.Group;
+import com.example.schedule.data.dto.GroupDto;
+import com.example.schedule.data.model.Group;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
