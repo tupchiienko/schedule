@@ -1,6 +1,7 @@
 package com.example.schedule.controller;
 
-import com.example.schedule.config.FullInfo;
+import com.example.schedule.data.validation.CreateInfo;
+import com.example.schedule.data.validation.UpdateInfo;
 import com.example.schedule.dto.SubjectDto;
 import com.example.schedule.model.Subject;
 import com.example.schedule.service.SubjectService;
@@ -9,7 +10,6 @@ import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -24,7 +24,7 @@ public class SubjectController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Subject create(@RequestBody @Validated(FullInfo.class) SubjectDto subjectDto) {
+    public Subject create(@RequestBody @Validated(CreateInfo.class) SubjectDto subjectDto) {
         return subjectService.create(subjectDto);
     }
 
@@ -49,7 +49,7 @@ public class SubjectController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Subject update(@PathVariable Long id, @RequestBody @Valid SubjectDto subjectDto) {
+    public Subject update(@PathVariable Long id, @RequestBody @Validated(UpdateInfo.class) SubjectDto subjectDto) {
         return subjectService.update(id, subjectDto);
     }
 

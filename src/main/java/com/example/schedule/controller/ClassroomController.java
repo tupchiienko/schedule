@@ -1,6 +1,7 @@
 package com.example.schedule.controller;
 
-import com.example.schedule.config.FullInfo;
+import com.example.schedule.data.validation.CreateInfo;
+import com.example.schedule.data.validation.UpdateInfo;
 import com.example.schedule.dto.ClassroomDto;
 import com.example.schedule.model.Classroom;
 import com.example.schedule.service.ClassroomService;
@@ -9,7 +10,6 @@ import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -24,7 +24,7 @@ public class ClassroomController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Classroom create(@RequestBody @Validated(FullInfo.class) ClassroomDto classroomDto) {
+    public Classroom create(@RequestBody @Validated(CreateInfo.class) ClassroomDto classroomDto) {
         return classroomService.create(classroomDto);
     }
 
@@ -49,7 +49,7 @@ public class ClassroomController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Classroom update(@PathVariable Long id, @RequestBody @Valid ClassroomDto classroomDto) {
+    public Classroom update(@PathVariable Long id, @RequestBody @Validated(UpdateInfo.class) ClassroomDto classroomDto) {
         return classroomService.update(id, classroomDto);
     }
 

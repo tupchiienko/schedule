@@ -1,6 +1,7 @@
 package com.example.schedule.dto;
 
-import com.example.schedule.config.FullInfo;
+import com.example.schedule.data.validation.CreateInfo;
+import com.example.schedule.data.validation.UpdateInfo;
 import lombok.*;
 
 import javax.validation.constraints.NotEmpty;
@@ -14,16 +15,16 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 public class StudentDto {
 
-    @NotNull(groups = FullInfo.class)
-    @NotEmpty
-    @Size(max = 32)
+    @NotNull(groups = CreateInfo.class)
+    @NotEmpty(groups = CreateInfo.class)
+    @Size(max = 32, groups = {CreateInfo.class, UpdateInfo.class})
     private String firstName;
 
-    @NotNull(groups = FullInfo.class)
-    @NotEmpty
-    @Size(max = 32)
+    @NotNull(groups = CreateInfo.class)
+    @NotEmpty(groups = CreateInfo.class)
+    @Size(max = 32, groups = {CreateInfo.class, UpdateInfo.class})
     private String lastName;
 
-    @NotNull(groups = FullInfo.class)
+    @NotNull(groups = CreateInfo.class)
     private Long groupId;
 }

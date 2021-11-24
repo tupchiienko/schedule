@@ -1,18 +1,15 @@
 package com.example.schedule.controller;
 
-import com.example.schedule.config.FullInfo;
-import com.example.schedule.dto.LessonDto;
+import com.example.schedule.data.validation.CreateInfo;
+import com.example.schedule.data.validation.UpdateInfo;
 import com.example.schedule.dto.StudentDto;
-import com.example.schedule.model.Lesson;
 import com.example.schedule.model.Student;
-import com.example.schedule.service.LessonService;
 import com.example.schedule.service.StudentService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -27,7 +24,7 @@ public class StudentController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Student create(@RequestBody @Validated(FullInfo.class) StudentDto studentDto) {
+    public Student create(@RequestBody @Validated(CreateInfo.class) StudentDto studentDto) {
         return studentService.create(studentDto);
     }
 
@@ -52,7 +49,7 @@ public class StudentController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Student update(@PathVariable Long id, @RequestBody @Valid StudentDto studentDto) {
+    public Student update(@PathVariable Long id, @RequestBody @Validated(UpdateInfo.class) StudentDto studentDto) {
         return studentService.update(id, studentDto);
     }
 

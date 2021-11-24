@@ -1,6 +1,7 @@
 package com.example.schedule.controller;
 
-import com.example.schedule.config.FullInfo;
+import com.example.schedule.data.validation.CreateInfo;
+import com.example.schedule.data.validation.UpdateInfo;
 import com.example.schedule.dto.GroupDto;
 import com.example.schedule.model.Group;
 import com.example.schedule.service.GroupService;
@@ -9,7 +10,6 @@ import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -24,7 +24,7 @@ public class GroupController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Group create(@RequestBody @Validated(FullInfo.class) GroupDto groupDto) {
+    public Group create(@RequestBody @Validated(CreateInfo.class) GroupDto groupDto) {
         return groupService.create(groupDto);
     }
 
@@ -49,7 +49,7 @@ public class GroupController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Group update(@PathVariable Long id, @RequestBody @Valid GroupDto groupDto) {
+    public Group update(@PathVariable Long id, @RequestBody @Validated(UpdateInfo.class) GroupDto groupDto) {
         return groupService.update(id, groupDto);
     }
 
